@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Аквапарк «Лагуна» — билеты и калькулятор стоимости</title>  
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="#top">Лагуна</a>
+      <nav class="nav">
+        <a class="nav__link" href="#slides">Горки</a>
+        <a class="nav__link" href="#calculator">Калькулятор</a>
+        <a class="nav__link" href="#map">Как добраться</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="sun"></div>
+
+      <div class="container hero__content">
+        <h1 class="hero__title">Лето круглый год под одной крышей</h1>
+        <p class="hero__text">
+          Семь горок, ленивая река и тёплая волна. Рассчитайте стоимость визита
+          за минуту и приходите всей семьёй.
+        </p>
+        <div class="hero__buttons">
+          <a class="button button--sun" href="#calculator">Рассчитать стоимость</a>
+          <a class="button button--ghost" href="#map">Показать на карте</a>
+        </div>
+      </div>
+
+      <div class="waves" aria-hidden="true">
+        <svg class="wave wave--back" viewBox="0 0 2000 120" preserveAspectRatio="none">
+          <path d="M0 60 C150 0 350 0 500 60 S850 120 1000 60 S1350 0 1500 60 S1850 120 2000 60 V120 H0 Z"></path>
+        </svg>
+        <svg class="wave wave--front" viewBox="0 0 2000 120" preserveAspectRatio="none">
+          <path d="M0 60 C150 0 350 0 500 60 S850 120 1000 60 S1350 0 1500 60 S1850 120 2000 60 V120 H0 Z"></path>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section" id="slides">
+      <div class="container">
+        <h2 class="section__title">Что вас ждёт</h2>
+
+        <div class="slides">
+          <article class="slide slide--big">
+            <h3 class="slide__title">Камикадзе</h3>
+            <p class="slide__text">
+              Вертикальный спуск с высоты 22 метров. Две секунды свободного
+              падения, после которых хочется повторить.
+            </p>
+          </article>
+
+          <article class="slide slide--river">
+            <h3 class="slide__title">Ленивая река</h3>
+            <p class="slide__text">300 метров спокойного течения на надувном круге.</p>
+          </article>
+
+          <article class="slide slide--kids">
+            <h3 class="slide__title">Детская лагуна</h3>
+            <p class="slide__text">Мелководье до 40 см, маленькие горки и фонтаны.</p>
+          </article>
+
+          <article class="slide slide--wave">
+            <h3 class="slide__title">Волновой бассейн</h3>
+            <p class="slide__text">Волны до 1,2 метра каждые 20 минут, как на настоящем море.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--foam" id="calculator">
+      <div class="container calc">
+
+        <div class="calc__intro">
+          <h2 class="section__title">Сколько стоит день в аквапарке</h2>
+          <p class="calc__lead">
+            Укажите, сколько вас придёт, в какой день, и будут ли с вами дети.
+            Цена посчитается сама.
+          </p>
+
+          <ul class="prices">
+            <li class="prices__item">
+              <span>Взрослый билет</span>
+              <strong id="priceAdult"></strong>
+            </li>
+            <li class="prices__item">
+              <span>Детский билет (до 14 лет)</span>
+              <strong id="priceChild"></strong>
+            </li>
+            <li class="prices__item">
+              <span>Выходные и праздники</span>
+              <strong>+10%</strong>
+            </li>
+          </ul>
+        </div>
+
+        <form class="calc__form" id="calcForm" novalidate>
+
+          <fieldset class="field">
+            <legend class="field__label">Сколько вас всего</legend>
+            <div class="stepper">
+              <button class="stepper__button" type="button" data-target="people" data-delta="-1" aria-label="Уменьшить">−</button>
+              <input class="stepper__input" id="people" name="people" type="number" min="1" max="50" value="2" inputmode="numeric">
+              <button class="stepper__button" type="button" data-target="people" data-delta="1" aria-label="Увеличить">+</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend class="field__label">Когда придёте</legend>
+            <div class="segment">
+              <label class="segment__item">
+                <input type="radio" name="day" value="weekday" checked>
+                <span>Рабочий день</span>
+              </label>
+              <label class="segment__item">
+                <input type="radio" name="day" value="weekend">
+                <span>Выходной</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend class="field__label">Будут ли дети</legend>
+            <div class="segment">
+              <label class="segment__item">
+                <input type="radio" name="kids" value="no" checked>
+                <span>Нет</span>
+              </label>
+              <label class="segment__item">
+                <input type="radio" name="kids" value="yes">
+                <span>Да</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field" id="kidsBox" hidden>
+            <legend class="field__label">Сколько из них детей</legend>
+            <div class="stepper">
+              <button class="stepper__button" type="button" data-target="kidsCount" data-delta="-1" aria-label="Уменьшить">−</button>
+              <input class="stepper__input" id="kidsCount" name="kidsCount" type="number" min="1" max="50" value="1" inputmode="numeric">
+              <button class="stepper__button" type="button" data-target="kidsCount" data-delta="1" aria-label="Увеличить">+</button>
+            </div>
+          </fieldset>
+
+          <div class="result" aria-live="polite">
+            <div class="result__row" id="rowAdults">
+              <span id="textAdults"></span>
+              <span id="sumAdults"></span>
+            </div>
+            <div class="result__row" id="rowKids">
+              <span id="textKids"></span>
+              <span id="sumKids"></span>
+            </div>
+            <div class="result__row" id="rowMarkup">
+              <span>Надбавка за выходной (10%)</span>
+              <span id="sumMarkup"></span>
+            </div>
+
+            <p class="result__warning" id="warning" hidden>
+              Дети до 14 лет проходят только в сопровождении взрослого.
+              Добавьте хотя бы одного взрослого.
+            </p>
+
+            <div class="result__total">
+              <span>Итого</span>
+              <strong id="total">0 ₽</strong>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="map-section">
+      <div class="container map">
+
+        <div class="map__info" id="map">
+          <h2 class="section__title">Как добраться</h2>
+          <p class="map__address">
+            Краснодарский край, г. Сочи,<br>
+            Приморская набережная, 1
+          </p>
+          <p class="map__note">Не настоящая локация</p>
+          <p class="map__hint">
+            До моря три минуты пешком. Парковка для гостей находится
+            рядом со входом.
+          </p>
+        </div>
+
+        <div class="map__frame">
+          <div class="map__canvas" id="yandexMap"></div>
+          <span class="map__badge">не настоящая локация</span>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Аквапарк «Лагуна». Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=ВАШ_API_КЛЮЧ&lang=ru_RU"></script>
+  <script src="script.js"></script>
+</body>
+</html>
